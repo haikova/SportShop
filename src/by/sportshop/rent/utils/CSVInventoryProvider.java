@@ -18,48 +18,38 @@ import static by.sportshop.rent.constants.MessageConstants.NOT_READ_INVENTORY;
 /**
  * Created by Olya on 26.03.2017.
  */
-public class CSVInventoryProvider implements InventoryProvider
-{
+public class CSVInventoryProvider implements InventoryProvider {
 
     private File inventoryFile;
 
-    public CSVInventoryProvider(File inventoryFile) throws IOException
-    {
+    public CSVInventoryProvider(File inventoryFile) throws IOException {
         checkFile(inventoryFile);
         this.inventoryFile = inventoryFile;
     }
 
-    private void checkFile(File file) throws FileNotFoundException
-    {
-        if (!(file.exists() && file.isFile()))
-        {
+    private void checkFile(File file) throws FileNotFoundException {
+        if (!(file.exists() && file.isFile())) {
             throw new FileNotFoundException(NOT_FIND_CSV_FILE);
         }
     }
 
     @Override
-    public Map<SportEquipment, Integer> loadInventory()
-    {
+    public Map<SportEquipment, Integer> loadInventory() {
         Map<SportEquipment, Integer> goods = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(this.inventoryFile)))
-        {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.inventoryFile))) {
             String line;
-            while ((line = reader.readLine()) != null)
-            {
+            while ((line = reader.readLine()) != null) {
                 String[] tokens = line.split(",");
                 parseEquipment(goods, tokens);
             }
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             throw new RuntimeException(NOT_READ_INVENTORY, e);
         }
 
         return goods;
     }
 
-    private void parseEquipment(Map<SportEquipment, Integer> goods, String[] tokens)
-    {
+    private void parseEquipment(Map<SportEquipment, Integer> goods, String[] tokens) {
         Category category = Category.valueOf(tokens[0]);
         String title = tokens[1];
         int price = Integer.parseInt(tokens[2]);

@@ -7,31 +7,26 @@ import by.sportshop.rent.enums.Category;
 
 import java.io.Serializable;
 
-public class SportEquipment implements Serializable
-{
+public class SportEquipment implements Serializable {
     private Category category;
     private String title;
     private int price;
 
-    public SportEquipment(Category category, String title, int price)
-    {
+    public SportEquipment(Category category, String title, int price) {
         this.category = category;
         this.title = title;
         this.price = price;
     }
 
-    public Category getCategory()
-    {
+    public Category getCategory() {
         return category;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public int getPrice()
-    {
+    public int getPrice() {
         return price;
     }
 

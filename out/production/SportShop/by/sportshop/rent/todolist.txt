@@ -1,8 +1,0 @@
-1. Change Category into Enum
-2. Parse csv line in CsvInventory Provider
-3. Complete rent method in Shop
-4. Re-do interactive command-line interface in Main
-5. Implement serialization in SerializationRentStore
-6. Remove commented code blocks
-7. Add comments
-8. Check code for compatibility with code convention (read code convention)

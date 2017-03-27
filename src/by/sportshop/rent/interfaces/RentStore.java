@@ -8,8 +8,7 @@ import java.util.List;
 /**
  * Created by Olya on 26.03.2017.
  */
-public interface RentStore extends Serializable
-{
+public interface RentStore extends Serializable {
     List<RentUnit> loadRentUnits();
 
     void store(List<RentUnit> rentUnits);
