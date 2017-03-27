@@ -16,10 +16,9 @@ import java.util.Scanner;
 
 import static by.sportshop.rent.constants.FilesConstants.INIT_FILE_NAME;
 import static by.sportshop.rent.constants.FilesConstants.RENT_FILE_NAME;
+import static by.sportshop.rent.constants.MessageConstants.NOT_DATA_VALID;
 
-/**
- * Created by Olya on 26.03.2017.
- */
+
 public class Main {
 
     private static void getAvailableEquipment(Shop shop) {
@@ -82,13 +81,15 @@ public class Main {
 
             while (true) {
 
-                System.out.println("1 - List of available sport equipments \n" +
+                System.out.println("=======================================\n" +
+                        "1 - List of available sport equipments \n" +
                         "2 - List of all rented sport equipments \n" +
                         "3 - Show cart \n" +
                         "4 - Add a product to cart\n" +
                         "5 - Clear cart\n" +
-                        "6 - Checkout\n" + // TODO: call rent on shop. Catch InvalidRentUnit and print a message
-                        "0 - Exit the terminal"); // TODO: save shop state
+                        "6 - Checkout\n" +
+                        "0 - Exit the terminal\n" +
+                        "=======================================");
 
                 Scanner in = new Scanner(System.in);
                 try {
@@ -123,12 +124,12 @@ public class Main {
                         case 0:
                             System.exit(0);
                         default:
-                            System.out.println("Data not valid; Try again!");
+                            System.out.println(NOT_DATA_VALID);
                             break;
                     }
 
                 } catch (InputMismatchException e) {
-                    System.out.println("Data not valid; Try again!");
+                    System.out.println(NOT_DATA_VALID);
                 }
 
             }

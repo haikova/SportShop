@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Olya on 26.03.2017.
+ * Save and load informarion about all rent units
  */
 public class SerializationRentStore implements RentStore {
 
@@ -18,9 +18,9 @@ public class SerializationRentStore implements RentStore {
         this.filename = filename;
     }
 
+    /** Loads information about rent unit from a file*/
     @Override
     public List<RentUnit> loadRentUnits() {
-        // TODO: De-serialize list of rent units from 'filename'
         List<RentUnit> rentUnits = new ArrayList<>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             rentUnits = (List<RentUnit>) ois.readObject();
@@ -32,6 +32,7 @@ public class SerializationRentStore implements RentStore {
         return rentUnits;
     }
 
+    /** Saves information about rent unit in a file*/
     @Override
     public void store(List<RentUnit> rentUnits) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
@@ -39,6 +40,5 @@ public class SerializationRentStore implements RentStore {
         } catch (IOException ex) {
             System.out.println("Rent file not found");
         }
-        // TODO: Serialize list of rent units in 'filename'
     }
 }

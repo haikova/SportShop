@@ -1,12 +1,12 @@
 package by.sportshop.rent.entity;
-/**
- * Created by Olya on 25.03.2017.
- */
 
 import by.sportshop.rent.enums.Category;
 
 import java.io.Serializable;
 
+/**
+ * Product data
+ */
 public class SportEquipment implements Serializable {
     private Category category;
     private String title;

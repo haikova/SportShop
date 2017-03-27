@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * Created by Olya on 25.03.2017.
+ * Goods that the user has leased
  */
-
 public class RentUnit implements Serializable {
     private SportEquipment[] units = new SportEquipment[3];
     private int count = 0;

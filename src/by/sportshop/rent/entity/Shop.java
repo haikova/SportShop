@@ -1,9 +1,5 @@
 package by.sportshop.rent.entity;
 
-/**
- * Created by Olya on 25.03.2017.
- */
-
 import by.sportshop.rent.interfaces.InventoryProvider;
 import by.sportshop.rent.interfaces.RentStore;
 
@@ -12,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Stores a unit of goods, available goods and list of rent goods
+ */
 public class Shop implements Serializable {
 
     private Map<SportEquipment, Integer> goods = new HashMap<>();
@@ -26,10 +25,8 @@ public class Shop implements Serializable {
         calculateAvailableGoods();
     }
 
+    /** Represents a rent */
     public boolean rent(RentUnit unit) {
-        // TODO: check that unit.getUnits > 0 and <= 3
-        // TODO: check availability
-        // TODO: add to rentUnits and ...
         Map<SportEquipment, Integer> bufAvailableGoods = new HashMap<>();
         if ((unit.getCount() != 0) && (unit.getCount() < 4)) {
             for (SportEquipment equipment : unit.getUnits()) {
@@ -52,6 +49,7 @@ public class Shop implements Serializable {
         return true;
     }
 
+    /** Calculates all available goods for rent */
     private void calculateAvailableGoods() {
         for (SportEquipment equipment : goods.keySet()) {
             availableGoods.put(equipment, goods.get(equipment).intValue());

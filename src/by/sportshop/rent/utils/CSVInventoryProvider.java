@@ -16,7 +16,7 @@ import static by.sportshop.rent.constants.MessageConstants.NOT_FIND_CSV_FILE;
 import static by.sportshop.rent.constants.MessageConstants.NOT_READ_INVENTORY;
 
 /**
- * Created by Olya on 26.03.2017.
+ * Initializing items from a file
  */
 public class CSVInventoryProvider implements InventoryProvider {
 
@@ -33,6 +33,7 @@ public class CSVInventoryProvider implements InventoryProvider {
         }
     }
 
+    /** Loads inventory from file, split file*/
     @Override
     public Map<SportEquipment, Integer> loadInventory() {
         Map<SportEquipment, Integer> goods = new HashMap<>();
@@ -49,6 +50,7 @@ public class CSVInventoryProvider implements InventoryProvider {
         return goods;
     }
 
+    /** Adds information from line in product data*/
     private void parseEquipment(Map<SportEquipment, Integer> goods, String[] tokens) {
         Category category = Category.valueOf(tokens[0]);
         String title = tokens[1];
@@ -56,6 +58,5 @@ public class CSVInventoryProvider implements InventoryProvider {
         Integer count = Integer.parseInt(tokens[3]);
         SportEquipment sportEquipment = new SportEquipment(category, title, price);
         goods.put(sportEquipment, count);
-        // TODO: parse category, price and count. If successful, add to the goods map.
     }
 }
